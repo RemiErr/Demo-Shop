@@ -201,23 +201,22 @@
         @csrf
         @method('post')
 
-        @foreach ($items as $item)
+        @foreach ($products as $product)
         <tr>
           <td>
-            <input type="hidden" name="name" value="{{$item->name}}">
-            {{$item->name}}
+              {{$product->name}}
+              <input type="hidden" name="products[{{$loop->index}}][id]" value="{{$product->id}}">
           </td>
           <td>
-            <input type="hidden" name="price" value="{{$item->price}}">
-            ${{$item->price}}
+              {{$product->price}}
           </td>
           <td style="min-width: 120px;">
             <div class="ts-box">
               <div class="content">
                 <div class="ts-input">
-                  <input type="hidden" name="date" value="2024/04/29">
-                  <input type="hidden" name="user_id" value="A123">
-                  <input type="number" name="qty" value="1">
+                  <input type="hidden" name="products[{{$loop->index}}][date]" value="{{date("Y-m-d")}}">
+                  <input type="hidden" name="products[{{$loop->index}}][user_id]" value="{{$users[0]->id}}">
+                  <input id="num_{{$product->id}}" type="number" name="products[{{$loop->index}}][num]" value="0">
                 </div>
               </div>
             </div>
@@ -233,29 +232,6 @@
       </form>
       </tbody>
     </table>
-
-    <form method="post" action="{{route('index.buy')}}">
-      @csrf
-      @method('post')
-      <div>
-        <label>{{$item->name}}</label>
-      </div>
-      <div>
-          <label>Quantity</label>
-          <input type="text" name="qty" value="1"/>
-      </div>
-      <div>
-        <label>Date</label>
-        <input type="text" name="date" value="2024/04/28"/>
-      </div>
-      <div>
-        <label>User</label>
-        <input type="text" name="id" value="a"/>
-      </div>
-      <div>
-          <button type="submit">Save</button>
-      </div>
-    </form>
 
   </div>
 

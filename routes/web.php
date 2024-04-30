@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', [IndexController::class, 'viewIndex'])->name('index.view');
-Route::post('/', [IndexController::class, 'newOrder'])->name('index.buy');
-
-Route::get('/cart', [OrderController::class, 'viewOrder'])->name('order.view');
+Route::get('/', [ShopController::class, 'viewIndex'])->name('index.view');
+Route::post('/', [ShopController::class, 'newOrder'])->name('index.buy');

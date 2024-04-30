@@ -5,13 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class RelInclude extends Model
 {
     use HasFactory;
 
+    protected $table = 'include';
+    public $timestamps = false;
+
     protected $fillable = [
-        'id',
-        'name',
-        'price',
+        'num',
+        'order_id',
+        'product_id'
     ];
 }

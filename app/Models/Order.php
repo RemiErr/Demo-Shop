@@ -9,9 +9,12 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $table = 'orders';
+    protected $primarykey = "id";
+    public $timestamps = false;
+
     protected $fillable = [
-        'id',
-        'quantity',
         'date',
+        'user_id'
     ];
 }
